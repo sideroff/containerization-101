@@ -77,7 +77,7 @@ Environment variables that a container has set can be inspected by running the i
 ```<instruction> <argument>```
 Instructions are all caps.
 1. ```FROM``` - first line (can be preceeded by variables using ARG), specifies the base docker image
-1. ```RUN - runs argument in the bash
+1. ```RUN``` - runs argument in the bash
 1. ```COPY <foo> <bar>``` - copies everything from host foo directory to container bar directory
 1. ```ENTRYPOINT``` - commands to run when image is run as conntainer
 
