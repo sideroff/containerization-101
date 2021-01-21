@@ -12,7 +12,7 @@ You can avoid that problem by running each of your troubled dependencies in a se
 
 ## docker hub/store
 [https://hub.docker.com/](https://hub.docker.com/)
-A repository of all public images. You can publish your own image.
+A registry of all public images. You can publish your own image.
 
 
 ## image
@@ -56,7 +56,7 @@ Ports inside a container are not accessible outside. For that to work you need t
 
 
 ## volume mapping
-Data inside the docker container dies when the container is removed. To save data, you can map a volume on the host to a volume inside the container. This way, all the data that would otherwise live inside the container gets written to the host volume. Supply ```-v``` or ```--volume <host path>:<container path>``` to the run command to map the volume.
+Data inside the docker container dies when the container is removed. To save data, you can map a independant volume to a volume inside the container. This way, all the data that would otherwise live inside the container gets written to the  volume. Supply ```-v``` or ```--volume <volume path>:<container path>``` to the run command to map the volume.
 
 
 ## detailed container data
@@ -87,3 +87,46 @@ instructions are “layers” as in they are hashed and cached and provide an in
 ### CMD vs ENTRYPOINT
 CMD is replaced by parameters supplied to run. 
 ENTRYPOINT prepended to parameters supplied to run.
+
+
+## Network
+By default, Docker creates 3 networks when installed: Bridge ( default ), Host & None. Usefull info on which exact network a container is under can be seen using the inspect command for that container.
+
+### Bridge
+A VPC created by docker that every container lives in by default, to access outside net, use port mapping. You can create custom bridge networks using the ```docker network create``` command. 
+
+### Host
+The container is ran inside the host network so no port mapping is needed.
+
+### None
+No attachments to any network.
+
+### Specifyingn a network on container creation
+
+```--network=<host|none>```
+
+
+## Storage
+Docker stores all data in ```/var/lib/docker/```
+
+## Resources
+Docker has a sort of alias for every process that it starts. This alias pid is linked to an actual process id on the host machine. Thus it's clear that docker containers use the underlying os kernel.
+
+
+## Container orchestration
+### why 
+Containers and even the docker host can fail. Furthermore load can also make a container unreachable. Thus a need for an orchestrator that keeps track of these things is created.
+
+### Orchestrators
+#### Swarm
+Can manage multiple docker hosts, load balance, etc.
+
+##### Structure
+You need multiple docker hosts. You designate one of them as the Master (swarm manager) and all others as Slaves (workers)
+
+1. ```docker swarm init``` - creates a docker swarm manager, returns a token used for attaching workers
+1. ```docker swarm join --token <token>``` - creates a worker and links it to the manager.
+
+#### kubernetes
+Basically swarm but on steroids
+#### MESOS
