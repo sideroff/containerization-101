@@ -163,3 +163,10 @@ Kubernetes cli.
 ### Virtual Network
 This allows the nodes to talk to each other.
 
+
+## Continious integration
+Basically make sure that each new addition to the code is:
+1. buildable
+2. testable ( and passes tests )
+
+This way no new broken code gets accepted in the repo.
