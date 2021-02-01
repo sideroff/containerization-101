@@ -62,7 +62,7 @@ Ports inside a container are not accessible outside. For that to work you need t
 
 ## volume mapping
 
-Data inside the docker container dies when the container is removed. To save data, you can map a independant volume to a volume inside the container. This way, all the data that would otherwise live inside the container gets written to the volume. Supply `-v` or `--volume <volume path>:<container path>` to the run command to map the volume.
+Data inside the docker container dies when the container is removed. To save data, you can map a independant volume to a volume inside the container. This way, all the data that would otherwise live inside the container gets written to the host volume. Supply `-v` or `--volume <volume path>:<container path>` to the run command to map the volume.
 
 ## detailed container data
 
