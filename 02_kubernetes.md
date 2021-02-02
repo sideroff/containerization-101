@@ -46,10 +46,10 @@ Open source container orchestration framework by Google.
 1. etcd - distributed reliable key value store - keeps the state of the Cluster
 1. Scheduler - Watches for newly created Pods and distributes them across Nodes
 1. Controller
-   1.1. Node controller - Keeps track of crashed Nodes
-   1.1. Replication controller - Maintains the correct number of Pods in a Node
-   1.1. Endpoints controller - Populates the Endpoints object ( joins Services and Pods )
-   1.1. Service Account & Token controllers - Manage accounts and API access tokens for new namespaces
+    1.1. Node controller - Keeps track of crashed Nodes
+    1.1. Replication controller - Maintains the correct number of Pods in a Node
+    1.1. Endpoints controller - Populates the Endpoints object ( joins Services and Pods )
+    1.1. Service Account & Token controllers - Manage accounts and API access tokens for new namespaces
 
 ## Node Components
 
