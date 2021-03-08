@@ -127,3 +127,7 @@ Docker stores all data in `/var/lib/docker/`
 ## Resources
 
 Docker has a sort of alias for every process that it starts. This alias pid is linked to an actual process id on the host machine. Thus it's clear that docker containers use the underlying os kernel.
+
+## Package managers
+
+Being that docker images are built on top of linux distros you can make use fo their repsective package managers, be it apt-get or apt ( for alpine ).
