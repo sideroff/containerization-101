@@ -90,6 +90,7 @@ Instructions are all caps.
 1. `RUN` - runs argument in the bash
 1. `COPY <foo> <bar>` - copies everything from host foo directory to container bar directory
 1. `ENTRYPOINT` - commands to run when image is run as conntainer
+1. `ARG` - defines a variable to pass from the command line to the image at build-time. A default value can be supplied for ARG in the Dockerfile: ARG my_var=default_value
 
 ### Dockerfile layers
 
