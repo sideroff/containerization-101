@@ -139,7 +139,7 @@ Storage is by default ephemeral. Using volumes can avoid the data loss on pod de
 
 
 # Deployment
- A blueprint for an application ( pod types, service types, secrets, replicas, etc..). Usually configured by a yaml/json file. Creating a deployment ( kubectl create deployment ) automatically creates a replicaset and a pod managed by it. In most cased you only need to manage deployments and kubernetes will manage everything below them for you. It checks a desired state agains the real state and issues commands based on any discrepencies.
+ A blueprint for an application ( pod types, service types, secrets, replicas, etc..). Usually configured by a yaml/json file. Creating a deployment ( kubectl create deployment ) automatically creates a replicaset and a pod managed by it. In most cased you only need to manage deployments and kubernetes will manage everything below them for you. It checks a desired state agains the real state and issues commands based on any discrepencies. 
 
  # StatefulSet
  A deployment-like feature designed so that reads and writes are synchronized, useful for dbs.
@@ -149,6 +149,21 @@ You can create everything in a deployment from the command line, but since the w
 ```
 kubectl apply -f YAML_CONFIGURATION_FILE.yaml
 ```
+
+If you change the yaml file and rerun the apply command, kubectl will look for a deployment with the same name as the one specified in the file and will decide whether to create or shut down the old and start the new one.
+
+## Configuration file components
+You can look at nginx-deployment as a reference.
+
+### Required Fields
+
+apiVersion - Which version of the Kubernetes API you're using to create this object
+kind - What kind of object you want to create
+metadata - Data that helps uniquely identify the object, including a name string, UID, and optional namespace
+spec - What state you desire for the object
+
+### Customization
+Information about the format of each specific one can be found [here](https://kubernetes.io/docs/concepts/overview/working-with-objects/kubernetes-objects/) -> Kubernetes API Reference
 
 # Debugging 
  ```
