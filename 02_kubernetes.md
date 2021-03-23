@@ -102,10 +102,59 @@ Kubernetes allows progressive updates in order to ensure no down time. It also w
 Kubernetes networking addresses four concerns:
 
 1. Communication between Containers in a Pod
-1. Communication between Pods
+1. Communication between Pods 
 1. Exposing applications to the outside of the cluster ( reachable from the outside )
 1. Exposing applications to the inside of your cluster ( only reachable inside )
 
 # Service
 
 Say you have 1-N Pods that need to talk to each other. Since Pods are dynamically created and deleted by Kubernetes, there is no elegant solution for them to keep track of one another. A Service is a way for developers to specify a logical set of Pods with a "name" that can later be used to communicate with them. This means that Kubernetes is free to manage resources by creating and destroying certain Pods, but that does not break the communication between them.
+
+Services can be Internal and External. 
+
+## Internal
+Internal services are used for communication between pods in a deployment.
+## External
+External ones are used to expose endpoints.
+## Ingress
+Since external services are in some 
+```
+<host>:<port>
+```
+format, Kubernetes has a thing called Ingerss which an external service goes through and ingress makes it available from a url (http://mywebsite.com)
+
+
+
+# Configuration
+Common things like endpoints, secrets, tokens don't need to be in your application code. Rather you can use ENV vars to expose them to your application. ConfigMap and Secrets can both be exposed using ENV vars.
+## ConfigMap
+External configuration of your application ( endpoints, etc. )
+
+## Secret
+Just like configmap, but base64 encoded and used to store secrets.
+
+
+# Storage
+Storage is by default ephemeral. Using volumes can avoid the data loss on pod deletion.
+
+
+# Deployment
+ A blueprint for an application ( pod types, service types, secrets, replicas, etc..). Usually configured by a yaml/json file. Creating a deployment ( kubectl create deployment ) automatically creates a replicaset and a pod managed by it. In most cased you only need to manage deployments and kubernetes will manage everything below them for you. It checks a desired state agains the real state and issues commands based on any discrepencies.
+
+ # StatefulSet
+ A deployment-like feature designed so that reads and writes are synchronized, useful for dbs.
+
+# Working with configuration files
+You can create everything in a deployment from the command line, but since the whole idea is to have setups as code, kubernetes can read a config from a file with the following command:
+```
+kubectl apply -f YAML_CONFIGURATION_FILE.yaml
+```
+
+# Debugging 
+ ```
+ kubectl exec -it DEPLOYMENT_NAME -- [bin/sh bin/bash]
+ ```
+
+ # Common commands
+ [kubectl cheat sheet](https://kubernetes.io/docs/reference/kubectl/cheatsheet/)
+
