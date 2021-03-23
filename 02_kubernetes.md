@@ -160,7 +160,7 @@ You can look at nginx-deployment as a reference.
 apiVersion - Which version of the Kubernetes API you're using to create this object
 kind - What kind of object you want to create
 metadata - Data that helps uniquely identify the object, including a name string, UID, and optional namespace
-spec - What state you desire for the object
+spec - What state you desire for the object. The template prop inside is the blueprint for the pod.
 
 ### Customization
 Information about the format of each specific one can be found [here](https://kubernetes.io/docs/concepts/overview/working-with-objects/kubernetes-objects/) -> Kubernetes API Reference
