@@ -166,10 +166,20 @@ spec - What state you desire for the object. The template prop inside is the blu
 Information about the format of each specific one can be found [here](https://kubernetes.io/docs/concepts/overview/working-with-objects/kubernetes-objects/) -> Kubernetes API Reference
 
 # Debugging 
+Launch a shell in the pod:
  ```
  kubectl exec -it DEPLOYMENT_NAME -- [bin/sh bin/bash]
  ```
 
+Get detiled info about a running deployment
+```
+kubectl get deployment NAME_OF_DEPLOYMENT -o yaml
+```
+
+Get detailed info about a service
+```
+kubectl describe service
+```
  # Common commands
  [kubectl cheat sheet](https://kubernetes.io/docs/reference/kubectl/cheatsheet/)
 
