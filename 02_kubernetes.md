@@ -180,6 +180,12 @@ Get detailed info about a service
 ```
 kubectl describe service
 ```
+
+# Deleting a component by its yaml file
+```
+kubectl delete -f YAML_FILE.yaml
+```
+
  # Common commands
  [kubectl cheat sheet](https://kubernetes.io/docs/reference/kubectl/cheatsheet/)
 
